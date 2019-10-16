@@ -10,8 +10,7 @@ import main
 from functools import partial
 
 #To convert the content in text field to speech
-
-def do_(et,w):
+def do(et,w):
 	x = 2 - (w.get()*1.0)/100
 	if x == 0:
 		x = 0.001
@@ -27,28 +26,27 @@ def open_(fun_edit):
 	ad = tkFileDialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("txt","*.txt"),("all files","*.*")))
 	file = open(ad, 'r')
 
-	fun_edit.insert('insert', file.read())		
+	fun_edit.insert('insert', file.read())
 	main.sayFile(ad)
 
 #To delete the content in the text box
 
 def clear_(fun_edit):
-	fun_edit.delete('1.0', END)	
+	fun_edit.delete('1.0', END)
 
 master = Tk()
 master.title("TTS")
 
 #Scroll Text Box
 edit_space = ScrolledText.ScrolledText(
-    wrap   = 'word',  
-    width  = "150",      
-    height = 20       
+    wrap   = 'word',
+    width  = "150",
+    height = 20
     )
 edit_space.grid(row = 0 , column = 0, padx="5")
-
 #Clear Button
 button = Button(
-                   text="Clear", 
+                   text="Clear",
                    fg="red",
                    command=partial(clear_,edit_space))
 
@@ -62,15 +60,14 @@ w.set(100)
 
 #Play Button
 button = Button(
-                   text="Play", 
+                   text="Play",
                    fg="red",
-                   command=partial(do_,edit_space,w))
-
+                   command=partial(do,edit_space,w))
 button.grid(row=0,column=2)
 
 #Choose File button
 button1 = Button(
-                   text="Choose File", 
+                   text="Choose File",
                    fg="red",
                    command=partial(open_,edit_space,))
 
