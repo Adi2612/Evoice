@@ -12,4 +12,4 @@ a.  sudo apt-get install python python-dev festival festival-dev
 b.  python setup.py install
 
 - For running:
-a.  python demo.py
+a.  python index.py
