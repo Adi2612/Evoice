@@ -27,10 +27,84 @@ static PyObject* setStretchFactor(PyObject* self, PyObject* args) {
     }
 }
 
+
 /*
-* Write remaining methods here -- 
+* API for executing Command in festival terminals
+*
+*/
+static PyObject* execCommand(PyObject* self, PyObject* args) {
+    
+    const char* command;
+    if (!PyArg_ParseTuple(args, "s:execCommand", &command)) return NULL;
+    
+    bool success = festival_eval_command(command);
+    
+    if (success) {
+        Py_RETURN_TRUE;
+    } else {
+        Py_RETURN_FALSE;
+    }
+}
+/*
+* API for converting text to wav
+*/
+static PyObject* _textToWav(PyObject* self, PyObject* args) {
+    const char* text;
+    if (!PyArg_ParseTuple(args, "s:_textToWav", &text)) return NULL;
+    
+    EST_Wave wave;
+    if (!festival_text_to_wave(text, wave)) {
+        PyErr_SetString(PyExc_SystemError, "Unable to convert text to wave");
+        return NULL;
+    }
+    
+    EST_String tmpfile = make_tmp_filename();
+    FILE *fp = fopen(tmpfile, "wb");
+    
+    if (wave.save(fp, "riff") != write_ok) {
+        fclose(fp);
+        remove(tmpfile);
+        PyErr_SetString(PyExc_SystemError, "Unable to create wav file");
+        return NULL;
+    }
+    fclose(fp);
+    
+    PyObject *filename = PyUnicode_FromStringAndSize((const char *)tmpfile, tmpfile.length());
+    return filename;
+}
+
+/*
+* API for saying a text
+*
+*/
+static PyObject* _sayText(PyObject* self, PyObject* args) {
+    const char *text;
+    if (!PyArg_ParseTuple(args, "s:_sayText", &text)) return NULL;
+    bool success = festival_say_text(text);
+    if (success) {
+        Py_RETURN_TRUE;
+    } else {
+        Py_RETURN_FALSE;
+    }
+}
+/*
+* API for saying a particular file
 * 
 */
+static PyObject* sayFile(PyObject* self, PyObject* args) {
+    const char *filename;
+    if (!PyArg_ParseTuple(args, "s:sayFile", &filename)) return NULL;
+
+    bool success = festival_say_file(filename);
+    // The C++ API docs for festival say you should use this to wait for the audio to finish playing
+    // but it seems to cause the audio spooler to die
+    // festival_wait_for_spooler();
+    if (success) {
+        Py_RETURN_TRUE;
+    } else {
+        Py_RETURN_FALSE;
+    }
+}
 
 
 
