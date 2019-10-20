@@ -2,7 +2,7 @@
 from Tkinter import *
 import configparser
 import tkFileDialog
-
+import pdftotext
 # import Tkinter.scrolledtext as scrolledtext
 import ScrolledText
 
@@ -23,11 +23,16 @@ def do(et,w):
 #To open a file and covert it's content to speech
 
 def open_(fun_edit):
-	ad = tkFileDialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("txt","*.txt"),("all files","*.*")))
-	file = open(ad, 'r')
-
-	fun_edit.insert('insert', file.read())
-	main.sayFile(ad)
+	ad = tkFileDialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("txt","*.txt"),("pdf","*.pdf"),("all files","*.*")))
+	if(".pdf" in ad):
+		# Load your PDF
+		with open(ad, "rb") as f:
+    		pdf = pdftotext.PDF(f)
+    	main.sayText("\n\n".join(pdf))
+    else:
+    	file = open(ad, 'r')
+		fun_edit.insert('insert', file.read())
+		main.sayFile(ad)
 
 #To delete the content in the text box
 
