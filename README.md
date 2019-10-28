@@ -9,7 +9,7 @@ a.  Tkinter
 Procedure
 - For setup:
 a.  sudo apt-get install python python-dev festival festival-dev
-b.  python setup.py install
+b.  python setup.py build
 
 - For running:
 a.  python index.py

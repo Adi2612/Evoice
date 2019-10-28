@@ -135,7 +135,7 @@ static PyObject *festivalinit(void)
         };
     module = PyModule_Create(&moduledef);
 #else
-    module = Py_InitModule3(module_name, festival_methods, module_doc);
+    module = Py_InitModule3(module_name, festival_methods, "API");
 #endif
     if (module == NULL) {
         return NULL;

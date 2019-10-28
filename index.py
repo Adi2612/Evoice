@@ -6,7 +6,7 @@ import pdftotext
 # import Tkinter.scrolledtext as scrolledtext
 import ScrolledText
 
- import main
+import main
 from functools import partial
 
 
@@ -39,17 +39,21 @@ def do(et,w):
 
 
 #To open a file and covert it's content to speech
-def open_(fun_edit):
-	ad = tkFileDialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("txt","*.txt"),("pdf","*.pdf"),("all files","*.*")))
-	if(".pdf" in ad):
-		with open(ad, "rb") as f:
-			pdf = pdftotext.PDF(f)
-		main.sayText("\n\n".join(pdf))
+def open_(fun_edit, w):
+  x = 2 - (w.get()*1.0)/100
+  if x == 0:
+    x = 0.001
+  main.setStretchFactor(x)
+  ad = tkFileDialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("txt","*.txt"),("pdf","*.pdf"),("all files","*.*")))
+  if(".pdf" in ad):
+    with open(ad, "rb") as f:
+      pdf = pdftotext.PDF(f)
+      main.sayText("\n\n".join(pdf))
 			    	# main.sayText("\n\n".join(pdf))
-	else:
-		file = open(ad, 'r')
-		fun_edit.insert('insert', file.read())
-		main.sayFile(ad)
+  else:
+    file = open(ad, 'r')
+    fun_edit.insert('insert', file.read())
+    main.sayFile(ad)
 
 
 
@@ -126,7 +130,7 @@ button2.grid(row=0,column=0,pady="15", padx="15", sticky="ew")
 button1 = Button(
                    text="Choose a File",
                    # fg="red",
-                   command=partial(open_,edit_space,))
+                   command=partial(open_,edit_space,w))
 button1.grid(row=0,column=1, pady="15",padx="15",sticky="ew")
 
 
