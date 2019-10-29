@@ -12,7 +12,7 @@ a.  sudo apt-get install python python-dev festival festival-dev
 b. make clean
 c. make all
 
-d.  python setup.py build
+d.  python2 setup.py build
 
 - For running:
-a.  python index.py
+a.  python2 index.py
