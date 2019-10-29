@@ -4,11 +4,11 @@ import configparser
 import tkFileDialog
 import pdftotext
 import ScrolledText
-
+import tkMessageBox
 import main
 from functools import partial
 
-var1=0
+# var1=0
 
 
 '''
@@ -34,22 +34,42 @@ def sel2():
 
 #To convert the content in text field to speech
 def do(et,w, var1):
-    print(var1.get())
-    x = 2 - (w.get()*1.0)/100
-    if x == 0:
+  x = 2 - (w.get()*1.0)/100
+  if x == 0:
 		x = 0.001
-    main.setStretchFactor(x)
-    ad = str(et.get('1.0', END))
-    if ad == '\n':
+  main.setStretchFactor(x)
+  ad = str(et.get('1.0', END))
+  if ad == '\n':
 		return 1
+  if var1.get() == 2:
+    ad=ad.split('\n')
+    for i in range(len(ad)):
+      if ad[i] == "\n" or ad[i]=="":
+        continue
+      main.sayText(ad[i])
+      result = tkMessageBox.askyesno("Python","Do you want to continue?")
+      if result == "False":
+        break
+  if var1.get() == 1  :
+    ad=ad.split('.')
+    for i in range(len(ad)):
+      if ad[i] == "\n":
+        continue
+      main.sayText(ad[i])
+      result = tkMessageBox.askyesno("Python","Do you want to continue?")
+      if result == "False":
+        break
+  if var1.get() == 3 or var1.get() == 0:
     main.sayText(ad)
+
+    
 
 
 
 
 
 #To open a file and covert it's content to speech
-def open_(fun_edit, w):
+def open_(fun_edit, w,var1):
   x = 2 - (w.get()*1.0)/100
   if x == 0:
     x = 0.001
@@ -146,7 +166,7 @@ button2.grid(row=0,column=0,pady="15", padx="15", sticky="ew")
 button1 = Button(
                    text="Choose a File",
                    # fg="red",
-                   command=partial(open_,edit_space,w))
+                   command=partial(open_,edit_space,w,var1))
 button1.grid(row=0,column=1, pady="15",padx="15",sticky="ew")
 
 
