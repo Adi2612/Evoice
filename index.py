@@ -8,12 +8,12 @@ import ScrolledText
 import main
 from functools import partial
 
-
+var1=0
 
 
 '''
 We need to add consumer and producer shit over here : ---
--- 
+--
     and use the play pause plug-in and see if it is working on. ::
 --
 '''
@@ -32,17 +32,17 @@ def sel2():
 
 
 
-
 #To convert the content in text field to speech
-def do(et,w):
-	x = 2 - (w.get()*1.0)/100
-	if x == 0:
+def do(et,w, var1):
+    print(var1.get())
+    x = 2 - (w.get()*1.0)/100
+    if x == 0:
 		x = 0.001
-	main.setStretchFactor(x)
-	ad = str(et.get('1.0', END))
-	if ad == '\n':
+    main.setStretchFactor(x)
+    ad = str(et.get('1.0', END))
+    if ad == '\n':
 		return 1
-	main.sayText(ad)
+    main.sayText(ad)
 
 
 
@@ -95,33 +95,39 @@ edit_space = ScrolledText.ScrolledText(
     height = "20"
 
     )
-edit_space.grid(row = 3,column = 2,padx=(0,50), pady="50")
+edit_space.grid(row = 4,column = 3,padx=(0,50), pady="50")
 
 
-
-
+#pause line/paragraph
+var1 = IntVar()
+R1 = Radiobutton( text = "Line", variable = var1, value = 1)
+R1.grid(row=1, column=0,sticky="ew")
+R2 = Radiobutton( text = "Paragraph", variable = var1, value = 2)
+R2.grid(row=1, column=1,sticky="ew")
+R3 = Radiobutton( text = "No break", variable = var1, value = 3)
+R3.grid(row=1, column=2,sticky="ew")
 
 #adding options for voice type
 var = IntVar()
 R1 = Radiobutton( text = "English-UK", variable = var, value = 1,
                   command = sel)
-R1.grid(row=4, column=0,sticky="ew")
+R1.grid(row=5, column=0,sticky="ew")
 R2 = Radiobutton( text = "English-US", variable = var, value = 2,
                   command = sel1)
-R2.grid(row=5, column=0,sticky="ew", pady=(0,50))
+R2.grid(row=6, column=0,sticky="ew", pady=(0,50))
+
 
 
 
 
 
 #Speed of speech
-Label(master, text='Speed').grid(row=2, column=0, pady=(20,0))
+Label(master, text='Speed').grid(row=3, column=0, pady=(20,0))
 w = Scale(master, from_=0, to=200, orient=HORIZONTAL, tickinterval=0.01)
-w.grid(row=2, column=1)
+w.grid(row=3, column=1)
 w.set(100)
-Label(master, text='Enter the text or choose from a file').grid(row=0, column=2, sticky="ew")
-
-
+Label(master, text='Enter the text or choose from a file').grid(row=0, column=3, sticky="ew")
+Label(master, text='Specify the pause point: Line, Paragraph or no pause').grid(row=1, column=3, sticky="ew")
 
 
 
@@ -129,7 +135,7 @@ Label(master, text='Enter the text or choose from a file').grid(row=0, column=2,
 button2 = Button(
                    text="Play",
                    # fg="red",
-                   command=partial(do,edit_space,w))
+                   command=partial(do,edit_space,w, var1))
 button2.grid(row=0,column=0,pady="15", padx="15", sticky="ew")
 
 
@@ -145,15 +151,13 @@ button1.grid(row=0,column=1, pady="15",padx="15",sticky="ew")
 
 
 
-
-
 #pause button
 button4 = Button(
                    text="Pause",
                    # fg="red",
                    command=partial(pause_,edit_space))
 
-button4.grid(row=1,column=0, pady="15", padx="15",sticky="ew")
+button4.grid(row=2,column=0, pady="15", padx="15",sticky="ew")
 
 
 
@@ -164,5 +168,5 @@ button = Button(
                    # fg="red",
                    command=partial(clear_,edit_space))
 
-button.grid(row=1,column=1, pady="15", padx="15",sticky="ew")
+button.grid(row=2,column=1, pady="15", padx="15",sticky="ew")
 mainloop()
