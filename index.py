@@ -44,7 +44,7 @@ def do(et,w, var1):
   if var1.get() == 2:
     ad=ad.split('\n')
     for i in range(len(ad)):
-      if ad[i] == "\n" or ad[i]=="":
+      if not ad[i].strip():
         continue
       main.sayText(ad[i])
       result = tkMessageBox.askyesno("Python","Do you want to continue?")
@@ -53,7 +53,7 @@ def do(et,w, var1):
   if var1.get() == 1  :
     ad=ad.split('.')
     for i in range(len(ad)):
-      if ad[i] == "\n":
+      if not ad[i].strip():
         continue
       main.sayText(ad[i])
       result = tkMessageBox.askyesno("Python","Do you want to continue?")
@@ -78,12 +78,57 @@ def open_(fun_edit, w,var1):
   if(".pdf" in ad):
     with open(ad, "rb") as f:
       pdf = pdftotext.PDF(f)
-      main.sayText("\n\n".join(pdf))
-			    	# main.sayText("\n\n".join(pdf))
+      # main.sayText("\n\n".join(pdf))
+      s="\n\n".join(pdf)
+      if s == '\n':
+        return 1
+      if var1.get() == 2:
+        s=s.split('\n')
+        for i in range(len(s)):
+          if not s[i].strip():
+            continue
+          main.sayText(s[i])
+          result = tkMessageBox.askyesno("Python","Do you want to continue?")
+          if not result:
+            print "yoyoyo"
+            break
+      if var1.get() == 1  :
+        s=s.split('.')
+        for i in range(len(s)):
+          if not s[i].strip():
+            continue
+          main.sayText(s[i])
+          result = tkMessageBox.askyesno("Python","Do you want to continue?")
+          if result == "False":
+            break
+      if var1.get() == 3 or var1.get() == 0:
+        main.sayText(s)
   else:
-    file = open(ad, 'r')
-    fun_edit.insert('insert', file.read())
-    main.sayFile(ad)
+    with open(ad, 'r') as myfile:
+      s = myfile.read()
+      # print s
+      if s == '\n':
+        return 1
+      if var1.get() == 2:
+        s=s.split('\n')
+        for i in range(len(s)):
+          if not s[i].strip():
+            continue
+          main.sayText(s[i])
+          result = tkMessageBox.askyesno("Python","Do you want to continue?")
+          if result == "False":
+            break
+      if var1.get() == 1  :
+        s=s.split('.')
+        for i in range(len(s)):
+          if not s[i].strip():
+            continue
+          main.sayText(s[i])
+          result = tkMessageBox.askyesno("Python","Do you want to continue?")
+          if result == "False":
+            break
+      if var1.get() == 3 or var1.get() == 0:
+        main.sayText(s)
 
 
 
