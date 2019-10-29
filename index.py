@@ -37,8 +37,12 @@ def do(et,w, var1):
   x = 2 - (w.get()*1.0)/100
   if x == 0:
 		x = 0.001
+
+
   main.setStretchFactor(x)
   ad = str(et.get('1.0', END))
+  if et.tag_ranges(SEL):
+    ad = et.get(SEL_FIRST ,SEL_LAST)
   if ad == '\n':
 		return 1
   if var1.get() == 2:
@@ -48,7 +52,7 @@ def do(et,w, var1):
         continue
       main.sayText(ad[i])
       result = tkMessageBox.askyesno("Python","Do you want to continue?")
-      if result == "False":
+      if not result:
         break
   if var1.get() == 1  :
     ad=ad.split('.')
@@ -57,7 +61,7 @@ def do(et,w, var1):
         continue
       main.sayText(ad[i])
       result = tkMessageBox.askyesno("Python","Do you want to continue?")
-      if result == "False":
+      if not result:
         break
   if var1.get() == 3 or var1.get() == 0:
     main.sayText(ad)
@@ -90,7 +94,6 @@ def open_(fun_edit, w,var1):
           main.sayText(s[i])
           result = tkMessageBox.askyesno("Python","Do you want to continue?")
           if not result:
-            print "yoyoyo"
             break
       if var1.get() == 1  :
         s=s.split('.')
@@ -99,7 +102,7 @@ def open_(fun_edit, w,var1):
             continue
           main.sayText(s[i])
           result = tkMessageBox.askyesno("Python","Do you want to continue?")
-          if result == "False":
+          if not result:
             break
       if var1.get() == 3 or var1.get() == 0:
         main.sayText(s)
@@ -116,7 +119,7 @@ def open_(fun_edit, w,var1):
             continue
           main.sayText(s[i])
           result = tkMessageBox.askyesno("Python","Do you want to continue?")
-          if result == "False":
+          if not result:
             break
       if var1.get() == 1  :
         s=s.split('.')
@@ -125,7 +128,7 @@ def open_(fun_edit, w,var1):
             continue
           main.sayText(s[i])
           result = tkMessageBox.askyesno("Python","Do you want to continue?")
-          if result == "False":
+          if not result:
             break
       if var1.get() == 3 or var1.get() == 0:
         main.sayText(s)
