@@ -13,7 +13,6 @@ libraries = ['Festival', 'estools', 'estbase', 'eststring']
 
 setup(
     name='festiv',
-    py_modules=['festival'],
     ext_modules=[
         Extension(
             '_festival',
@@ -25,3 +24,5 @@ setup(
     ],
     platforms=["*nix"]
 )
+
+

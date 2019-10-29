@@ -3,11 +3,21 @@ from Tkinter import *
 import configparser
 import tkFileDialog
 import pdftotext
-# import Tkinter.scrolledtext as scrolledtext
 import ScrolledText
 
 import main
 from functools import partial
+
+
+
+
+'''
+We need to add consumer and producer shit over here : ---
+-- 
+    and use the play pause plug-in and see if it is working on. ::
+--
+'''
+
 
 
 

@@ -125,7 +125,7 @@ static PyObject *festivalinit(void)
     static struct PyModuleDef moduledef = {
             PyModuleDef_HEAD_INIT,
             module_name,     /* m_name */
-            module_doc,  /* m_doc */
+            "shit",  /* m_doc */
             -1,                  /* m_size */
             festival_methods,    /* m_methods */
             NULL,                /* m_reload */
