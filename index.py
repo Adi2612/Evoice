@@ -12,7 +12,7 @@ from functools import partial
 
 
 '''
-We need to add consumer and producer shit over here : ---
+We need to add consumer and producer over here : ---
 --
     and use the play pause plug-in and see if it is working on. ::
 --
@@ -23,6 +23,7 @@ We need to add consumer and producer shit over here : ---
 
 
 #choosing language
+#3 languages : English, English US, Italian
 def sel():
     print("English\n")
 def sel1():
@@ -38,7 +39,7 @@ def do(et,w, var1):
   if x == 0:
 		x = 0.001
 
-
+#For inter-line and inter-para pausing
   main.setStretchFactor(x)
   ad = str(et.get('1.0', END))
   if et.tag_ranges(SEL):
@@ -67,8 +68,6 @@ def do(et,w, var1):
     main.sayText(ad)
 
     
-
-
 
 
 
