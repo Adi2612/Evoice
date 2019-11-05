@@ -25,8 +25,8 @@ def sel2():
 #To convert the content in text field to speech
 def TextBox(et,w, var1):
   x = 2 - (w.get()*1.0)/100
-  if x == 0:
-		x = 0.001
+  if x <0.1:
+		x = 0.1
 
 #For inter-line and inter-para pausing
   main.setStretchFactor(x)
@@ -63,8 +63,8 @@ def TextBox(et,w, var1):
 #To open a file and covert it's content to speech
 def TextFromFile(fun_edit, w,var1):
   x = 2 - (w.get()*1.0)/100
-  if x == 0:
-    x = 0.001
+  if x < 0.1:
+    x = 0.1
   main.setStretchFactor(x)
   ad = tkFileDialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("txt","*.txt"),("pdf","*.pdf"),("all files","*.*")))
   if(".pdf" in ad):
