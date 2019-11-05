@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("tex",["Function"],[["TextBox",,[[,,,,0,"File:index.py:TextBox"]]],["TextFromFile",,[[,,,,0,"File:index.py:TextFromFile"]]]]);
