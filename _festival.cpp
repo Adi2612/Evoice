@@ -1,7 +1,4 @@
-/*
-* A python executable cpp wrap for C++ api defined for Festival 
-* 
-*/
+
 #include <stdio.h>
 #include <festival.h>
 #include "festival_private.h"
@@ -10,7 +7,13 @@
 #define PyUnicodeObject23 PyUnicodeObject
 
 /*
-* Set the Speed of the Voice
+* Function: setStretchFactor
+* it sets the stretching factor for festival
+* 
+* Parameters:
+*     self - required parameter for python header
+*     args - required parameter for python header and will contains the arguments 
+* 
 */
 static PyObject* setStretchFactor(PyObject* self, PyObject* args) {
     
@@ -27,10 +30,14 @@ static PyObject* setStretchFactor(PyObject* self, PyObject* args) {
     }
 }
 
-
 /*
+* Function: execCommand
 * API for executing Command in festival terminals
-*
+* 
+* Parameters:
+*     self - required parameter for python header
+*     args - required parameter for python header and will contains the arguments 
+* 
 */
 static PyObject* execCommand(PyObject* self, PyObject* args) {
     
@@ -46,8 +53,16 @@ static PyObject* execCommand(PyObject* self, PyObject* args) {
     }
 }
 /*
+* Function: _textToWav
 * API for converting text to wav
+* 
+* Parameters:
+*     self - required parameter for python header
+*     args - required parameter for python header and will contains the arguments 
+* 
 */
+
+
 static PyObject* _textToWav(PyObject* self, PyObject* args) {
     const char* text;
     if (!PyArg_ParseTuple(args, "s:_textToWav", &text)) return NULL;
@@ -74,9 +89,15 @@ static PyObject* _textToWav(PyObject* self, PyObject* args) {
 }
 
 /*
+* Function: _sayText
 * API for saying a text
-*
+* 
+* Parameters:
+*     self - required parameter for python header
+*     args - required parameter for python header and will contains the arguments 
+* 
 */
+
 static PyObject* _sayText(PyObject* self, PyObject* args) {
     const char *text;
     if (!PyArg_ParseTuple(args, "s:_sayText", &text)) return NULL;
@@ -88,9 +109,15 @@ static PyObject* _sayText(PyObject* self, PyObject* args) {
     }
 }
 /*
+* Function: sayFile
 * API for saying a particular file
 * 
+* Parameters:
+*     self - required parameter for python header
+*     args - required parameter for python header and will contains the arguments 
+* 
 */
+
 static PyObject* sayFile(PyObject* self, PyObject* args) {
     const char *filename;
     if (!PyArg_ParseTuple(args, "s:sayFile", &filename)) return NULL;
