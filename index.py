@@ -23,7 +23,7 @@ def sel2():
 
 
 #To convert the content in text field to speech
-def do(et,w, var1):
+def TextBox(et,w, var1):
   x = 2 - (w.get()*1.0)/100
   if x == 0:
 		x = 0.001
@@ -61,7 +61,7 @@ def do(et,w, var1):
 
 
 #To open a file and covert it's content to speech
-def open_(fun_edit, w,var1):
+def TextFromFile(fun_edit, w,var1):
   x = 2 - (w.get()*1.0)/100
   if x == 0:
     x = 0.001
@@ -169,7 +169,7 @@ w.set(100)
 button2 = Button(
                    text="Play",activebackground="CadetBlue4",
                    # fg="red",
-                   command=partial(do,edit_space,w, var1))
+                   command=partial(TextBox,edit_space,w, var1))
 button2.grid(row=3,column=0,pady="25", padx=(25,15))
 
 
@@ -180,7 +180,7 @@ button2.grid(row=3,column=0,pady="25", padx=(25,15))
 button1 = Button(
                    text="Choose a File", activebackground="CadetBlue4",
                    # fg="red",
-                   command=partial(open_,edit_space,w,var1))
+                   command=partial(TextFromFile,edit_space,w,var1))
 button1.grid(row=3,column=1, pady="15",padx="15",sticky="ew")
 
 
