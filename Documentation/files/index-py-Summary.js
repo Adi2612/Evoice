@@ -1,0 +1,1 @@
+NDFramePage.OnPageTitleLoaded("File:index.py","index.py");NDSummary.OnSummaryLoaded("File:index.py",[["Python","Python"]],[["Functions","Function"],["Groups","Group"]],[[1,0,1,"Functions","Functions"],[2,0,0,"TextBox","TextBox"],[5,0,0,"TextFromFile","TextFromFile"],[6,0,0,"clear_","clear_"]]);

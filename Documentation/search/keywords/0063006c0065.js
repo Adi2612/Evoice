@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("cle",["Function"],[["clear_",,[[,,,,0,"File:index.py:clear_"]]]]);
