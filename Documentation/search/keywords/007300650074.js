@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("set",["Function"],[["setStretchFactor",,[[,,"C/C++",,0,"File:_festival.cpp:setStretchFactor"],[,,"Python",,0,"File:main.py:setStretchFactor"]]]]);
