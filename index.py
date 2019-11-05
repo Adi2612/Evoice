@@ -11,8 +11,16 @@ from functools import partial
 
 
 '''------------------------------------Converting text to speech----------------------------------------'''
+# Function: TextBox
+# It firstly changes the speed by calling main.setStretchFactor() and then converts the text to speech.
+#
+#Parameters:
+#   et - Entry object that stores the input.
+#   w - Object to store value returned by slider widget.
+#   var1 - The value of radio button chosen
 
-def TextBox(et,w, var1):
+
+def TextBox(et,w,var1):
   x = 2 - (w.get()*1.0)/100
   if x <0.1:
 		x = 0.1
@@ -47,7 +55,14 @@ def TextBox(et,w, var1):
 
 
 '''------------------------------------Opening a File----------------------------------------'''
-def TextFromFile(fun_edit, w,var1):
+# Function: TextFromFile
+# Function to open the file to read the text from.
+#
+# Parameters:
+#   fun_edit - Entry object that stores the input.
+#   w - Object to store value returned by slider widget.
+#   var1 - The value of radio button chosen
+def TextFromFile(fun_edit,w,var1):
   x = 2 - (w.get()*1.0)/100
   if x < 0.1:
     x = 0.1
@@ -87,6 +102,11 @@ def TextFromFile(fun_edit, w,var1):
 
 
 '''------------------------------------Clearing the text box----------------------------------------'''
+# Function: clear_
+# Function to clear the text box.
+#
+# Parameters:
+#   fun_edit - Entry object that stores the input.
 def clear_(fun_edit):
 	fun_edit.delete('1.0', END)
 
