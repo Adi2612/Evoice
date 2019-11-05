@@ -3,13 +3,23 @@ import _festival
 
 
 '''
-API for saying a text
+Function: sayText
+Parameters: 
 
+text:String - contains the input text
 
 '''
 def sayText(text):
 	return _festival._sayText(text)
 
+
+'''
+Function: execCommand
+Parameters: 
+
+cmd:String - contains the input command
+
+'''
 def execCommand(cmd):
 	return _festival.execCommand(cmd)
 
