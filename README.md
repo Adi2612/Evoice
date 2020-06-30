@@ -2,6 +2,8 @@
 
 E-voice is a text-to-speech synthesizer for English and other languages,  developed in order to help the visually impaired people using computer generated voice which can read the text to the user.
 
+https://www.kaggle.com/nroman/melanoma-pytorch-starter-efficientnet
+
 # Use case
 
 ## Command -- For setup
